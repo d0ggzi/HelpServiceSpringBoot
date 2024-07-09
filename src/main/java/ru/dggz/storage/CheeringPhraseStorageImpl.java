@@ -1,4 +1,4 @@
-package ru.dggz;
+package ru.dggz.storage;
 
 import org.springframework.stereotype.Component;
 
@@ -7,12 +7,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 import java.util.UUID;
+import java.util.Map;
 
 @Component
-public class CheeringPhraseStorage {
-    private final HashMap<UUID, String> cheeringPhrases = new HashMap<>();
+public class CheeringPhraseStorageImpl implements Storage {
+    private final Map<UUID, String> cheeringPhrases = new HashMap<>();
 
-    public String getRandomCheeringPhrase(){
+    public String getRandomCheeringPhrase() {
         List<String> valuesList = new ArrayList<>(cheeringPhrases.values());
         int randomIndex = new Random().nextInt(valuesList.size());
         return valuesList.get(randomIndex);
